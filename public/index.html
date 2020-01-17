@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aframe Assignment</title>
+        <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+        <script src="js/create-cow-component.js"></script>
+        <script src="js/delete-cow-component.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    </head>
+    <body>
+        <a-scene>
+            <a-assets>
+                <!-- always use response type on .glb and sound files -->
+                <!-- <audio id="space_music" src="assets/sounds/SpaceMusic.mp3" preload="auto" crossorigin="anonymous"></audio> -->
+            </a-assets>
+            
+            
+            <!-- sound -->
+            <!-- <a-entity sound="src:#space_music; autoplay:true;"></a-entity> -->
+
+            <!-- add a cool bg -->
+            <!-- <a-entity environment="preset: starry"></a-entity> -->
+            
+
+            <a-plane    id="ground"
+                        position="0 0 0"
+                        rotation="-90 0 0"
+                        width="20" height="20"
+                        color="#7BC8A4">
+            </a-plane>
+            
+            <a-entity   id="button" 
+                        class="clickable" 
+                        create-cow-component="" 
+                        geometry="primitive:cylinder; radius:0.4; height:0.1" 
+                        material="color:rgb(255, 255, 100)">
+            </a-entity>
+
+            <!-- adding camera manually so we add a cursor component to it -->
+            <a-entity position="0 1.2 2" camera look-controls wasd-controls>
+                <!-- cursor allows us to interact with objects. Add a raycaster and set constraints too to inscrease performance. "objects" refers to
+                     which entities will trigger the raycaster. E.g. set objects to the classname .clickable to only trigger entities with clickable as a class-->
+                <a-entity   cursor="rayOrigin:mouse;"
+                            raycast="far:20; interval:100; objects:.clickable">
+                </a-entity>
+            </a-entity>
+
+            <a-sky color="#ECECEC"></a-sky>
+
+          </a-scene>
+    </body>
+</html>
