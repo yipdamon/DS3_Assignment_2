@@ -1,6 +1,6 @@
 'use strict'
 
-AFRAME.registerComponent('create-cow-component',{
+AFRAME.registerComponent('spawn-shroom-component',{
     schema : {},
     init : function() {
         const Context_AF = this; //refers to "this" component
@@ -8,7 +8,7 @@ AFRAME.registerComponent('create-cow-component',{
         //add event listener for "click" event on whatever entity has this component
         Context_AF.el.addEventListener('click', function(event) {
             console.log("clicked!!!!:");
-            Context_AF.createCow();
+            Context_AF.createShroom();
         });
 
         //when "hovering" make larger
@@ -25,25 +25,25 @@ AFRAME.registerComponent('create-cow-component',{
 
     },
     //custom function for creating random cows
-    createCow : function(){
+    createShroom : function(){
         const Context_AF = this;
 
         //create an html element/entity that loads in cow model
-        let cowElem = document.createElement('a-entity') //create element by code
-        cowElem.setAttribute('class', 'clickable');
-        cowElem.setAttribute('obj-model', {obj:'assets/models/cow.obj'}); //set model
+        let shroomElem = document.createElement('a-entity') //create element by code
+        shroomElem.setAttribute('class', 'clickable');
+        shroomElem.setAttribute('obj-model', {obj:'assets/models/mushroom.obj'}); //set model
         //cowElem.setAttribute('obj-model','obj:assets/models/cow.obj;'});
-        cowElem.setAttribute('material', {src:'assets/textures/Cow.png'}); //set materials/textures
-        cowElem.setAttribute('delete-cow-component', {});
+        shroomElem.setAttribute('material', {src:'assets/textures/texturemush.jpeg'}); //set materials/textures
+        shroomElem.setAttribute('delete-shroom-component', {});
         
         //random transforms
-        cowElem.setAttribute('position', {x:(Math.random() * 6.0) - 3.0, y:0, z:-4.0 - (Math.random() * 3.0)} );
+        shroomElem.setAttribute('position', {x:(Math.random() * 6.0) - 3.0, y:0, z:-4.0 - (Math.random() * 3.0)} );
         const randScale = 0.2 + (Math.random() * 0.8);
-        cowElem.setAttribute('scale', {x:randScale, y:randScale, z:randScale}); //random scale
-        cowElem.setAttribute('rotation', {x:0, y:Math.random() * 360.0, z:0});   //random y rotation
+        shroomElem.setAttribute('scale', {x:randScale, y:randScale, z:randScale}); //random scale
+        shroomElem.setAttribute('rotation', {x:0, y:Math.random() * 360.0, z:0});   //random y rotation
 
         //last step is to attach to scene
         let scene = document.querySelector ('a-scene');
-        scene.appendChild(cowElem);
+        scene.appendChild(shroomElem);
     }
 });

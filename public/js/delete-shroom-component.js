@@ -1,6 +1,6 @@
 'use strict'
 
-AFRAME.registerComponent('delete-cow-component',{
+AFRAME.registerComponent('delete-shroom-component',{
     schema : {},
     init : function() {
         const Context_AF = this; //refers to "this" component
