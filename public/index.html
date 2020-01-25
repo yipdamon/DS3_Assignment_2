@@ -5,18 +5,24 @@
         <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
         <script src="js/spawn-shroom-component.js"></script>
         <script src="js/delete-shroom-component.js"></script>
+        <script src="js/manipulate-cube-component.js"></script>
         <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     </head>
     <body>
         <a-scene>
             <a-assets>
                 <!-- always use response type on .glb and sound files -->
-                <!-- <audio id="space_music" src="assets/sounds/SpaceMusic.mp3" preload="auto" crossorigin="anonymous"></audio> -->
+                <audio id="calm_music" src="assets/sounds/calmMusic.mp3" preload="auto" crossorigin="anonymous"></audio>
+                <audio id="death_sound" src="assets/sounds/deleteSound.mp3" preload="auto" crossorigin="anonymous"></audio>
             </a-assets>
             
             
             <!-- sound -->
-            <!-- <a-entity sound="src:#space_music; autoplay:true;"></a-entity> -->
+            <a-entity sound="src:#calm_music; autoplay:true; volume:0.5; loop:true;"></a-entity>
+            <a-entity soundTwo="src:#death_sound;"></a-entity>
+
+            <!-- Song: "Sappheiros - Embrace [Chill]" is under a Creative Commons license (CC BY 3.0) 
+                Music promoted by BreakingCopyright: http://bit.ly/Sappheiros-Embrace -->
 
             <!-- add a cool bg -->
             <a-entity environment="preset: forest"></a-entity>
@@ -24,8 +30,17 @@
             <a-entity   id="button" 
                         class="clickable" 
                         spawn-shroom-component="" 
-                        geometry="primitive:cylinder; radius:0.4; height:0.1" 
-                        material="color:rgb(255, 255, 100)">
+                        geometry="primitive:cylinder; radius:0.5; height:0.1" 
+                        material="color:rgb(255, 255, 100)"
+                        position="-0.7 0.0, 0.0">
+            </a-entity>
+
+            <a-entity   id="button2" 
+                        class="clickable" 
+                        manipulate-cube-component="" 
+                        geometry="primitive:cylinder; radius:0.5; height:0.1" 
+                        material="color:rgb(255, 100, 100)"
+                        position="0.7 0.0, 0.0">
             </a-entity>
 
             <!-- adding camera manually so we add a cursor component to it -->
@@ -37,7 +52,16 @@
                 </a-entity>
             </a-entity>
 
-            <a-sky color="#ECECEC"></a-sky>
+            <!--
+            <a-entity   id="blockHand"
+                        hand-controls="right"
+                        laser-controls intersection-spawn="event: click; mixin: voxel">
+            </a-entity>
+
+            <a-camera>
+                <a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
+            </a-camera>
+            -->
 
           </a-scene>
     </body>

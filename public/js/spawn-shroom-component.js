@@ -7,7 +7,7 @@ AFRAME.registerComponent('spawn-shroom-component',{
 
         //add event listener for "click" event on whatever entity has this component
         Context_AF.el.addEventListener('click', function(event) {
-            console.log("clicked!!!!:");
+            console.log("SUMMMONNNN");
             Context_AF.createShroom();
         });
 
@@ -37,7 +37,7 @@ AFRAME.registerComponent('spawn-shroom-component',{
         shroomElem.setAttribute('delete-shroom-component', {});
         
         //random transforms
-        shroomElem.setAttribute('position', {x:(Math.random() * 6.0) - 3.0, y:0, z:-4.0 - (Math.random() * 3.0)} );
+        shroomElem.setAttribute('position', {x:(Math.random() * 6.0) - 3.0, y:1, z:-4.0 - (Math.random() * 3.0)} );
         const randScale = 0.2 + (Math.random() * 0.8);
         shroomElem.setAttribute('scale', {x:randScale, y:randScale, z:randScale}); //random scale
         shroomElem.setAttribute('rotation', {x:0, y:Math.random() * 360.0, z:0});   //random y rotation
@@ -45,5 +45,6 @@ AFRAME.registerComponent('spawn-shroom-component',{
         //last step is to attach to scene
         let scene = document.querySelector ('a-scene');
         scene.appendChild(shroomElem);
+
     }
 });

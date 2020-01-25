@@ -7,7 +7,7 @@ AFRAME.registerComponent('delete-shroom-component',{
 
         //add event listener for "click" event on whatever entity has this component
         Context_AF.el.addEventListener('click', function(event) {
-            console.log("clicked!!!!:");
+            console.log("DELET DIS");
             Context_AF.deleteMyself();
         });
 
