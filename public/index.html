@@ -11,57 +11,58 @@
     <body>
         <a-scene>
             <a-assets>
-                <!-- always use response type on .glb and sound files -->
+                <!-- sound assets -->
                 <audio id="calm_music" src="assets/sounds/calmMusic.mp3" preload="auto" crossorigin="anonymous"></audio>
                 <audio id="death_sound" src="assets/sounds/deleteSound.mp3" preload="auto" crossorigin="anonymous"></audio>
+                <audio id="pop_sound" src="assets/sounds/popSound.mp3" preload="auto" crossorigin="anonymous"></audio>
             </a-assets>
-            
             
             <!-- sound -->
             <a-entity sound="src:#calm_music; autoplay:true; volume:0.5; loop:true;"></a-entity>
-            <a-entity soundTwo="src:#death_sound;"></a-entity>
-
+            <a-entity sound="src:#death_sound;"></a-entity>
+            
             <!-- Song: "Sappheiros - Embrace [Chill]" is under a Creative Commons license (CC BY 3.0) 
                 Music promoted by BreakingCopyright: http://bit.ly/Sappheiros-Embrace -->
 
-            <!-- add a cool bg -->
+            <!-- background -->
             <a-entity environment="preset: forest"></a-entity>
             
+            <!-- button one -->
             <a-entity   id="button" 
                         class="clickable" 
                         spawn-shroom-component="" 
                         geometry="primitive:cylinder; radius:0.5; height:0.1" 
                         material="color:rgb(255, 255, 100)"
-                        position="-0.7 0.0, 0.0">
+                        position="-0.7 0.0, 0.0"
+                        sound="src:#pop_sound; on: click">
             </a-entity>
-
+            
+             <!-- button two -->
             <a-entity   id="button2" 
                         class="clickable" 
                         manipulate-cube-component="" 
                         geometry="primitive:cylinder; radius:0.5; height:0.1" 
                         material="color:rgb(255, 100, 100)"
-                        position="0.7 0.0, 0.0">
+                        position="0.7 0.0, 0.0"
+                        sound="src:#pop_sound; on: click">
             </a-entity>
 
-            <!-- adding camera manually so we add a cursor component to it -->
-            <a-entity position="0 1.2 2" camera look-controls wasd-controls>
-                <!-- cursor allows us to interact with objects. Add a raycaster and set constraints too to inscrease performance. "objects" refers to
-                     which entities will trigger the raycaster. E.g. set objects to the classname .clickable to only trigger entities with clickable as a class-->
+             <!-- platform one -->
+            <a-entity   id="floor" 
+                        class="clickable" 
+                        move-component=""
+                        geometry="primitive:cylinder; radius:0.5; height:0.1" 
+                        material="color:rgb(100, 100, 255)"
+                        position="0.0, 0.0, 2.0"
+                        sound="src:#pop_sound; on: click">
+            </a-entity>
+
+            <!-- adding camera and cursor -->
+            <a-entity id="cameraOne" position="0 1.2 2" camera look-controls wasd-controls>
                 <a-entity   cursor="rayOrigin:mouse;"
                             raycast="far:20; interval:100; objects:.clickable">
                 </a-entity>
             </a-entity>
-
-            <!--
-            <a-entity   id="blockHand"
-                        hand-controls="right"
-                        laser-controls intersection-spawn="event: click; mixin: voxel">
-            </a-entity>
-
-            <a-camera>
-                <a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
-            </a-camera>
-            -->
 
           </a-scene>
     </body>

@@ -13,6 +13,7 @@ AFRAME.registerComponent('delete-shroom-component',{
 
     },
 
+    // delete when clicked on
     deleteMyself : function(){
         const Context_AF = this;
         Context_AF.el.parentNode.removeChild(Context_AF.el); //i brought you into this world, I can take you out too.

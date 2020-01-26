@@ -20,8 +20,7 @@ AFRAME.registerComponent('manipulate-cube-component',{
         });
 
     },
-
-    //custom function for creating random cows
+    // spawn cube function
     createCube : function(){
 
         var scene = document.querySelector('a-scene');
@@ -33,6 +32,7 @@ AFRAME.registerComponent('manipulate-cube-component',{
 
             scene.appendChild(box);
 
+        // have cube float up and down
         var t = 0;
         function render() {
             t += 0.01;

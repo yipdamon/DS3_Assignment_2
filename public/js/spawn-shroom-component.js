@@ -24,15 +24,14 @@ AFRAME.registerComponent('spawn-shroom-component',{
         });
 
     },
-    //custom function for creating random cows
+    //custom function for creating random shrooms
     createShroom : function(){
         const Context_AF = this;
 
-        //create an html element/entity that loads in cow model
+        //create an html element/entity that loads in shroom model
         let shroomElem = document.createElement('a-entity') //create element by code
         shroomElem.setAttribute('class', 'clickable');
         shroomElem.setAttribute('obj-model', {obj:'assets/models/mushroom.obj'}); //set model
-        //cowElem.setAttribute('obj-model','obj:assets/models/cow.obj;'});
         shroomElem.setAttribute('material', {src:'assets/textures/texturemush.jpeg'}); //set materials/textures
         shroomElem.setAttribute('delete-shroom-component', {});
         
@@ -42,7 +41,7 @@ AFRAME.registerComponent('spawn-shroom-component',{
         shroomElem.setAttribute('scale', {x:randScale, y:randScale, z:randScale}); //random scale
         shroomElem.setAttribute('rotation', {x:0, y:Math.random() * 360.0, z:0});   //random y rotation
 
-        //last step is to attach to scene
+        //attach to scene
         let scene = document.querySelector ('a-scene');
         scene.appendChild(shroomElem);
 
