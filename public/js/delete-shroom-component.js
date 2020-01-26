@@ -5,10 +5,15 @@ AFRAME.registerComponent('delete-shroom-component',{
     init : function() {
         const Context_AF = this; //refers to "this" component
 
+        Context_AF.soundElem = document.querySelector('#deathSound');
+
         //add event listener for "click" event on whatever entity has this component
         Context_AF.el.addEventListener('click', function(event) {
             console.log("DELET DIS");
             Context_AF.deleteMyself();
+
+            Context_AF.soundElem.components['sound'].stopSound();
+            Context_AF.soundElem.components['sound'].playSound();
         });
 
     },
